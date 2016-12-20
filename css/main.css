@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:500');
 body {
   color: #0277BD;
   background-color: #E1BEE7;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 #page {
@@ -30,6 +32,38 @@ form {
   text-align: center;
 }
 
+label {
+  font-size: 130%;
+  color: #880E4F;
+}
+
 #calendar {
   background-color: #E1F5FE;
+  font-family: 'Roboto', sans-serif;
+  color: #880E4F;
+}
+
+#calendar:focus {
+  border-color: #880E4F;
+}
+
+button {
+  font-family: 'Roboto', sans-serif;
+  border-radius: 10%;
+  background-color: #FCE4EC;
+  color: #880E4F;
+}
+
+button:hover {
+  background-color: #F48FB1;
+}
+
+p {
+  color: #efefef;
+  font-size: 120%;
+}
+
+h3 {
+  color: #880E4F;
+  font-size: 180%;
 }

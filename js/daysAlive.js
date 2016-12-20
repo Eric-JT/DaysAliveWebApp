@@ -125,7 +125,7 @@ function main() {
 
   var answer = calculateDates();
 
-  var result = document.createElement('p');
+  var result = document.createElement('h3');
   var resultContent = document.createTextNode(answer);
   result.appendChild(resultContent);
   var position = document.getElementById('form-group');
