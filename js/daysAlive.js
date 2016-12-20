@@ -1,20 +1,24 @@
-
-function isLeapYear(year){
+function isLeapYear(year) {
   /* Takes in a single parameter called year and calculates whether or not
   the year is a Leap Year. Returns either true or false */
 
-  if (year % 400 === 0){ return true; }
-  else if (year % 100 === 0){ return false; }
-  else if (year % 4 === 0){ return true; }
-  else { return false; }
+  if (year % 400 === 0) {
+    return true;
+  } else if (year % 100 === 0) {
+    return false;
+  } else if (year % 4 === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-function daysInMonth(year, month){
+function daysInMonth(year, month) {
   /* Takes in two parameters, year and month. checks how many days there
   are in the current month. Returns number of days in month */
 
   var days = 0;
-  switch(month){
+  switch (month) {
     case 1:
     case 3:
     case 5:
@@ -31,7 +35,7 @@ function daysInMonth(year, month){
       days = 30;
       break;
     case 2:
-      if (isLeapYear(year)){
+      if (isLeapYear(year)) {
         days = 29;
       } else {
         days = 28;
@@ -44,70 +48,68 @@ function daysInMonth(year, month){
   return days;
 }
 
-function nextDay(date){
+function nextDay(date) {
   /* takes a single parameter called date. moves the date to the next
   day. Returns the new date. */
 
-  if (date[2] < daysInMonth(date[0], date[1])){
+  if (date[2] < daysInMonth(date[0], date[1])) {
     date[0] = date[0];
     date[1] = date[1];
     date[2] = ++date[2];
     return date;
   } else {
-    if (date[1] === 12){
+    if (date[1] === 12) {
       date[0] = ++date[0];
       date[1] = 1;
       date[2] = 1;
       return date;
     } else {
       date[0] = date[0];
-        date[1] = ++date[1];
-        date[2] = 1;
-        return date;
+      date[1] = ++date[1];
+      date[2] = 1;
+      return date;
     }
   }
 }
 
-function isDateBefore(dateOne, dateTwo){
+function isDateBefore(dateOne, dateTwo) {
   /* Takes in two parameters, dateOne and dateTwo. Checks if dates
   are valid. Returns true or false */
 
-  if (dateOne[0] < dateTwo[0]){
+  if (dateOne[0] < dateTwo[0]) {
     return true;
-  }
-  else if (dateOne[0] === dateTwo[0]){
-    if (dateOne[1] < dateTwo[1]){
+  } else if (dateOne[0] === dateTwo[0]) {
+    if (dateOne[1] < dateTwo[1]) {
       return true;
-    }
-    else if (dateOne[1] === dateTwo[1]){
+    } else if (dateOne[1] === dateTwo[1]) {
       return dateOne[2] < dateTwo[2];
     }
   }
   return false;
 }
 
-function daysBetweenDates(dateOne, dateTwo){
+function daysBetweenDates(dateOne, dateTwo) {
   /* takes in two parameters, dateOne and dateTwo. calculates the number
   of days between dates. returns the number of days.*/
 
   var days = 0;
-  while(isDateBefore(dateOne, dateTwo)){
+  while (isDateBefore(dateOne, dateTwo)) {
     dateOne = nextDay(dateOne);
     days += 1;
   }
   return days;
 }
 
-function calculateDates(){
+function calculateDates() {
   /* Takes no arguments. Performs the actual calculations. Returns the amount
   of days alive*/
 
   var dateOfBirth = document.getElementById('calendar');
   dateOfBirth = dateOfBirth.value;
   dateOfBirth = dateOfBirth.split('-');
-  var dateOne = [parseInt(dateOfBirth[0], 10), parseInt(dateOfBirth[1], 10) , parseInt(dateOfBirth[2], 10)];
+  var dateOne = [parseInt(dateOfBirth[0], 10), parseInt(dateOfBirth[1], 10), parseInt(dateOfBirth[2], 10)];
   var today = new Date();
-  var dateTwo = [today.getFullYear(), today.getMonth()+1, today.getDate()];
+  var dateTwo = [today.getFullYear(), today.getMonth() + 1, today.getDate()];
 
   // Test cases
   //var dateOne = [1989,1,24];
@@ -118,7 +120,7 @@ function calculateDates(){
   return answer;
 }
 
-function main(){
+function main() {
   /* takes no arguments. Displays the results to the screen. */
 
   var answer = calculateDates();
@@ -126,13 +128,13 @@ function main(){
   var result = document.createElement('p');
   var resultContent = document.createTextNode(answer);
   result.appendChild(resultContent);
-  var position = document.getElementsByClassName('container')[0];
+  var position = document.getElementById('form-group');
   position.appendChild(result);
 }
 
 var submt = document.getElementById('button');
 
-submt.addEventListener('click', function(e){
+submt.addEventListener('click', function(e) {
   e.preventDefault();
   main();
 }, false);
