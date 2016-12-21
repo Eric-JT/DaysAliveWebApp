@@ -124,12 +124,8 @@ function main() {
   /* takes no arguments. Displays the results to the screen. */
 
   var answer = calculateDates();
-
-  var result = document.createElement('h3');
-  var resultContent = document.createTextNode(answer);
-  result.appendChild(resultContent);
-  var position = document.getElementById('form-group');
-  position.appendChild(result);
+  var displayResult = document.getElementById('result');
+  displayResult.textContent = answer;
 }
 
 var submt = document.getElementById('button');
