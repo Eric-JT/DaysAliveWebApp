@@ -42,7 +42,6 @@ function daysInMonth(year, month) {
       }
       break;
     default:
-      alert("You fucked up the date somehow.");
       break;
   }
   return days;
