@@ -114,9 +114,14 @@ function calculateDates() {
   //var dateOne = [1989,1,24];
   //var dateTwo = [2016,12,18];
 
-  var answer = daysBetweenDates(dateOne, dateTwo);
-  //console.log(answer);
-  return answer;
+  // check if dates are valid
+  if (dateOne[0] < dateTwo[0] && dateOne[1] < 13 && dateOne[2] < 32) {
+    var answer = daysBetweenDates(dateOne, dateTwo);
+    console.log(answer);
+    return answer;
+  } else {
+    return "Invalid Date"
+  }
 }
 
 function main() {
